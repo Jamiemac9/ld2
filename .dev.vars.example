@@ -1,0 +1,2 @@
+# Copy to .dev.vars for `npm run preview`. Same keys as .env.example.
+NEXTJS_ENV=development

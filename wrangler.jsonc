@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sellmydoll",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+  "observability": { "enabled": true }
+  // Secrets (set in the dashboard or with `npx wrangler secret put NAME`):
+  // SUPABASE_SERVICE_ROLE_KEY, ADMIN_USER, ADMIN_PASSWORD, BREVO_API_KEY,
+  // PAYMENT_LINK_STANDARD, PAYMENT_LINK_BROKERED, PAYMENT_LINK_DELIVERY, NOTIFY_EMAIL
+}
