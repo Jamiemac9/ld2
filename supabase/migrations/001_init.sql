@@ -66,7 +66,7 @@ create table public.enquiries (
 
 create table public.reports (
   id uuid primary key default gen_random_uuid(),
-  listing_id text references public.listings(id) on delete cascade,
+  listing_id text references public.listings(id) on delete set null,  -- keep reports even if a listing is deleted
   reason text not null,
   created_at timestamptz not null default now()
 );
@@ -93,3 +93,6 @@ insert into storage.buckets (id, name, public) values ('listing-photos', 'listin
   on conflict (id) do nothing;
 
 create index listings_status_idx on public.listings (status, created_at desc);
+create index listings_seller_idx on public.listings (seller_id);
+create index enquiries_listing_idx on public.enquiries (listing_id);
+create index reports_listing_idx on public.reports (listing_id);

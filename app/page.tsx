@@ -6,7 +6,7 @@ import StoryImg from '@/components/StoryImg';
 import { getListings } from '@/lib/store';
 import { GUIDES } from '@/lib/guides';
 
-export const revalidate = 300;
+export const dynamic = 'force-dynamic';
 
 const SITE = process.env.NEXT_PUBLIC_SITE_URL || 'https://sellmydoll.com';
 const orgLd = {
@@ -99,7 +99,7 @@ export default async function Home() {
         <div><b>Pre-owned only</b><span>We don't sell new stock. We're a brokerage.</span></div>
       </div>
 
-      <section>
+      {listings.length > 0 && <section>
         <div className="wrap">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', gap: 20, flexWrap: 'wrap', marginBottom: 24 }} data-reveal>
             <div><span className="eyebrow">Looking for a new home</span><h2 style={{ margin: 0, color: '#fff' }}>Recently listed</h2></div>
@@ -107,7 +107,7 @@ export default async function Home() {
           </div>
           <div className="grid" style={{ color: 'var(--ink)' }}>{listings.map((l) => <ListingCard key={l.id} l={l} />)}</div>
         </div>
-      </section>
+      </section>}
 
       <section>
         <div className="wrap">
